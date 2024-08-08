@@ -1,0 +1,498 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "Dineease Backend",
+    "collectionId": "5a0989c2-6deb-401a-bd8c-5f1ee37b144f",
+    "dateExported": "2024-04-21T17:10:46.786Z",
+    "version": "1.2",
+    "folders": [
+        {
+            "_id": "9dced6e4-57e2-4cb1-a224-2c62c978ca7b",
+            "name": "authentication",
+            "containerId": "",
+            "created": "2024-04-21T16:54:48.632Z",
+            "sortNum": 45000
+        },
+        {
+            "_id": "d3af242c-a2de-4954-9743-483e629e2897",
+            "name": "menuCategories",
+            "containerId": "",
+            "created": "2024-04-21T16:54:48.626Z",
+            "sortNum": 90000
+        },
+        {
+            "_id": "9d9f9e25-adc9-40d3-9ae0-75153b361519",
+            "name": "menuItems",
+            "containerId": "",
+            "created": "2024-04-21T16:54:48.627Z",
+            "sortNum": 100000
+        },
+        {
+            "_id": "b2c8f567-7c8d-4d92-87db-744feaa7ff6e",
+            "name": "tables",
+            "containerId": "",
+            "created": "2024-04-21T16:54:48.631Z",
+            "sortNum": 105000
+        },
+        {
+            "_id": "e31f1742-9243-46f9-9202-dc084367bb00",
+            "name": "orders",
+            "containerId": "",
+            "created": "2024-04-21T16:54:48.628Z",
+            "sortNum": 110000
+        },
+        {
+            "_id": "6325c90e-a55d-4e99-8646-6fd059b67152",
+            "name": "orderItems",
+            "containerId": "",
+            "created": "2024-04-21T16:54:48.629Z",
+            "sortNum": 120000
+        },
+        {
+            "_id": "a7dab742-f2a4-4d7a-b9db-d32c39e71e05",
+            "name": "stats",
+            "containerId": "",
+            "created": "2024-04-21T16:54:48.630Z",
+            "sortNum": 130000
+        },
+        {
+            "_id": "0c8d4c90-44aa-4f26-b9a1-1baaf62359ac",
+            "name": "other",
+            "containerId": "",
+            "created": "2024-04-21T16:54:48.633Z",
+            "sortNum": 160000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "4b1f5c8b-2842-410b-911d-6e3d20b96e26",
+            "colId": "5a0989c2-6deb-401a-bd8c-5f1ee37b144f",
+            "containerId": "d3af242c-a2de-4954-9743-483e629e2897",
+            "name": "Get all menu categories",
+            "url": "/menuCategories",
+            "method": "GET",
+            "sortNum": 380000,
+            "created": "2024-04-21T16:54:48.626Z",
+            "modified": "2024-04-21T16:54:48.626Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{token}}"
+            }
+        },
+        {
+            "_id": "00b7a795-afcf-48ad-837f-19fba9a650f6",
+            "colId": "5a0989c2-6deb-401a-bd8c-5f1ee37b144f",
+            "containerId": "d3af242c-a2de-4954-9743-483e629e2897",
+            "name": "DO NOT IMPLEMENT: Create new menu category",
+            "url": "/menuCategories",
+            "method": "POST",
+            "sortNum": 390000,
+            "created": "2024-04-21T16:54:48.627Z",
+            "modified": "2024-04-21T17:06:15.656Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"Extra Meal\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{token}}"
+            }
+        },
+        {
+            "_id": "f97f6567-ddf6-401a-be55-39038e0bb67f",
+            "colId": "5a0989c2-6deb-401a-bd8c-5f1ee37b144f",
+            "containerId": "d3af242c-a2de-4954-9743-483e629e2897",
+            "name": "DO NOT IMPLEMENT: Delete a menu category",
+            "url": "/menuCategories/{id}",
+            "method": "DELETE",
+            "sortNum": 400000,
+            "created": "2024-04-21T16:54:48.629Z",
+            "modified": "2024-04-21T17:06:56.474Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "24",
+                    "isPath": true
+                }
+            ],
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{token}}"
+            }
+        },
+        {
+            "_id": "67ed7d54-91c1-4d50-bcb2-a16dbcdc737f",
+            "colId": "5a0989c2-6deb-401a-bd8c-5f1ee37b144f",
+            "containerId": "d3af242c-a2de-4954-9743-483e629e2897",
+            "name": "DO NOT IMPLEMENT: Update a menu category",
+            "url": "/menuCategories/{id}",
+            "method": "PUT",
+            "sortNum": 410000,
+            "created": "2024-04-21T16:54:48.630Z",
+            "modified": "2024-04-21T17:07:02.483Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "24",
+                    "isPath": true
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"thunder\",\n  \"priority\": 36\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{token}}"
+            }
+        },
+        {
+            "_id": "763cb373-8432-49d1-8bda-4e39c4f362da",
+            "colId": "5a0989c2-6deb-401a-bd8c-5f1ee37b144f",
+            "containerId": "9d9f9e25-adc9-40d3-9ae0-75153b361519",
+            "name": "Get all menu items",
+            "url": "/menuItems",
+            "method": "GET",
+            "sortNum": 420000,
+            "created": "2024-04-21T16:54:48.631Z",
+            "modified": "2024-04-21T16:54:48.631Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{token}}"
+            }
+        },
+        {
+            "_id": "ca88e9aa-fa4a-4250-a5f2-ad06621d68f8",
+            "colId": "5a0989c2-6deb-401a-bd8c-5f1ee37b144f",
+            "containerId": "9d9f9e25-adc9-40d3-9ae0-75153b361519",
+            "name": "Create a new menu item",
+            "url": "/menuItems",
+            "method": "POST",
+            "sortNum": 430000,
+            "created": "2024-04-21T16:54:48.632Z",
+            "modified": "2024-04-21T17:07:32.160Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"Pizza Pacalos\",\n  \"type\": \"FOOD\",\n  \"menuCategoryId\": 12,\n  \"price\": 3600\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{token}}"
+            }
+        },
+        {
+            "_id": "5816d500-5c3b-4810-93d4-4c8a500ac48b",
+            "colId": "5a0989c2-6deb-401a-bd8c-5f1ee37b144f",
+            "containerId": "9d9f9e25-adc9-40d3-9ae0-75153b361519",
+            "name": "Update a menu item",
+            "url": "/menuItems/{id}",
+            "method": "PUT",
+            "sortNum": 440000,
+            "created": "2024-04-21T16:54:48.633Z",
+            "modified": "2024-04-21T17:08:16.246Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "79",
+                    "isPath": true
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"Fritz Cola\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{token}}"
+            }
+        },
+        {
+            "_id": "c457cc6f-1fc1-4b1f-ba38-401d1f62d70a",
+            "colId": "5a0989c2-6deb-401a-bd8c-5f1ee37b144f",
+            "containerId": "9d9f9e25-adc9-40d3-9ae0-75153b361519",
+            "name": "Delete a menu item",
+            "url": "/menuItems/{id}",
+            "method": "DELETE",
+            "sortNum": 450000,
+            "created": "2024-04-21T16:54:48.634Z",
+            "modified": "2024-04-21T17:08:40.538Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "155",
+                    "isPath": true
+                }
+            ],
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{token}}"
+            }
+        },
+        {
+            "_id": "3d8a03d0-0793-4de4-95f7-d6d32bc8ca1f",
+            "colId": "5a0989c2-6deb-401a-bd8c-5f1ee37b144f",
+            "containerId": "e31f1742-9243-46f9-9202-dc084367bb00",
+            "name": "Create new order",
+            "url": "/orders",
+            "method": "POST",
+            "sortNum": 460000,
+            "created": "2024-04-21T16:54:48.635Z",
+            "modified": "2024-04-21T17:09:16.684Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"tableId\": 14\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{token}}"
+            }
+        },
+        {
+            "_id": "428df1a1-1f1c-481a-ab8b-eeb6aed853ba",
+            "colId": "5a0989c2-6deb-401a-bd8c-5f1ee37b144f",
+            "containerId": "e31f1742-9243-46f9-9202-dc084367bb00",
+            "name": "DO NOT IMPLEMENT: Get all orders",
+            "url": "/orders",
+            "method": "GET",
+            "sortNum": 470000,
+            "created": "2024-04-21T16:54:48.636Z",
+            "modified": "2024-04-21T16:54:48.636Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{token}}"
+            }
+        },
+        {
+            "_id": "657d441e-62b6-4cb0-bfb0-25fcc5b44b54",
+            "colId": "5a0989c2-6deb-401a-bd8c-5f1ee37b144f",
+            "containerId": "e31f1742-9243-46f9-9202-dc084367bb00",
+            "name": "Get open order for table",
+            "url": "/orders/tables/{tableId}",
+            "method": "GET",
+            "sortNum": 480000,
+            "created": "2024-04-21T16:54:48.637Z",
+            "modified": "2024-04-21T17:09:27.371Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "tableId",
+                    "value": "14",
+                    "isPath": true
+                }
+            ],
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{token}}"
+            }
+        },
+        {
+            "_id": "27ea7779-432b-489d-ac6f-8ee9e5e9562f",
+            "colId": "5a0989c2-6deb-401a-bd8c-5f1ee37b144f",
+            "containerId": "e31f1742-9243-46f9-9202-dc084367bb00",
+            "name": "Close order",
+            "url": "/orders/tables/{tableId}/close",
+            "method": "PUT",
+            "sortNum": 490000,
+            "created": "2024-04-21T16:54:48.638Z",
+            "modified": "2024-04-21T17:09:35.667Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "tableId",
+                    "value": "14",
+                    "isPath": true
+                }
+            ],
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{token}}"
+            }
+        },
+        {
+            "_id": "0705bccb-df4a-40eb-80fe-36ecdee98e2e",
+            "colId": "5a0989c2-6deb-401a-bd8c-5f1ee37b144f",
+            "containerId": "6325c90e-a55d-4e99-8646-6fd059b67152",
+            "name": "Create new order item",
+            "url": "/orderItems",
+            "method": "POST",
+            "sortNum": 500000,
+            "created": "2024-04-21T16:54:48.639Z",
+            "modified": "2024-04-21T17:09:55.083Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"orderId\": 12368,\n  \"menuItemId\": 79,\n  \"quantity\": 10\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{token}}"
+            }
+        },
+        {
+            "_id": "41c4e646-994e-4cce-973f-405f16293901",
+            "colId": "5a0989c2-6deb-401a-bd8c-5f1ee37b144f",
+            "containerId": "a7dab742-f2a4-4d7a-b9db-d32c39e71e05",
+            "name": "Get statistics",
+            "url": "/stats",
+            "method": "GET",
+            "sortNum": 510000,
+            "created": "2024-04-21T16:54:48.640Z",
+            "modified": "2024-04-21T16:54:48.640Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{token}}"
+            }
+        },
+        {
+            "_id": "2d392142-77f4-4670-9880-ace012e9efdd",
+            "colId": "5a0989c2-6deb-401a-bd8c-5f1ee37b144f",
+            "containerId": "b2c8f567-7c8d-4d92-87db-744feaa7ff6e",
+            "name": "DO NOT IMPLEMENT: Get all tables",
+            "url": "/tables",
+            "method": "GET",
+            "sortNum": 520000,
+            "created": "2024-04-21T16:54:48.641Z",
+            "modified": "2024-04-21T16:54:48.641Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{token}}"
+            }
+        },
+        {
+            "_id": "22eae217-3883-46d6-9748-5c6d614975e5",
+            "colId": "5a0989c2-6deb-401a-bd8c-5f1ee37b144f",
+            "containerId": "9dced6e4-57e2-4cb1-a224-2c62c978ca7b",
+            "name": "Login (username and password)",
+            "url": "/login",
+            "method": "POST",
+            "sortNum": 530000,
+            "created": "2024-04-21T16:54:48.642Z",
+            "modified": "2024-04-21T17:05:53.440Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"username\": \"thunder\",\n  \"password\": \"thunder\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{token}}"
+            },
+            "postReq": {
+                "inlineScripts": [
+                    {
+                        "script": [
+                            "if (String(tc.response.status).startsWith(\"2\")) {",
+                            "  tc.setVar(\"token\", tc.response.json.token, \"local\")",
+                            "}"
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "_id": "3155ad7b-6966-4990-9e25-ea314409a5b9",
+            "colId": "5a0989c2-6deb-401a-bd8c-5f1ee37b144f",
+            "containerId": "9dced6e4-57e2-4cb1-a224-2c62c978ca7b",
+            "name": "Login (PIN)",
+            "url": "/login/pin",
+            "method": "POST",
+            "sortNum": 540000,
+            "created": "2024-04-21T16:54:48.643Z",
+            "modified": "2024-04-21T17:00:23.684Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"pin\": \"1234\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{token}}"
+            },
+            "postReq": {
+                "inlineScripts": [
+                    {
+                        "script": [
+                            "if (String(tc.response.status).startsWith(\"2\")) {",
+                            "  tc.setVar(\"token\", tc.response.json.token, \"local\")",
+                            "}"
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "_id": "3ae839c5-f96a-4f54-ab85-91d5f1596286",
+            "colId": "5a0989c2-6deb-401a-bd8c-5f1ee37b144f",
+            "containerId": "9dced6e4-57e2-4cb1-a224-2c62c978ca7b",
+            "name": "Logout",
+            "url": "/logout",
+            "method": "POST",
+            "sortNum": 550000,
+            "created": "2024-04-21T16:54:48.644Z",
+            "modified": "2024-04-21T16:59:40.098Z",
+            "headers": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{token}}"
+            },
+            "postReq": {
+                "inlineScripts": [
+                    {
+                        "script": [
+                            "if (String(tc.response.status).startsWith(\"2\")) {",
+                            "  tc.setVar(\"token\", null, \"local\")",
+                            "}"
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "_id": "e94a5b6b-c6c7-45d0-9805-2f1f6fdedd67",
+            "colId": "5a0989c2-6deb-401a-bd8c-5f1ee37b144f",
+            "containerId": "0c8d4c90-44aa-4f26-b9a1-1baaf62359ac",
+            "name": "DO NOT IMPLEMENT: Reset the database",
+            "url": "/reset-db",
+            "method": "POST",
+            "sortNum": 560000,
+            "created": "2024-04-21T16:54:48.645Z",
+            "modified": "2024-04-21T16:54:48.645Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{token}}"
+            }
+        }
+    ],
+    "settings": {
+        "options": {
+            "baseUrl": "{{baseUrl}}"
+        }
+    },
+    "ref": "ztcK0ZCFDJh1OtORmNlotMI2OvQ7H-d3IMTjKHbNiCOyM9Cii9zjXNYLnveWtfxtWVGHpIlG42LNMjZPKvVBIA"
+}

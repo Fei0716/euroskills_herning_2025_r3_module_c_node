@@ -1,0 +1,669 @@
+openapi: 3.0.0
+info:
+  title: Dineease Ordering App Backend API
+  description: Backend API for the Dineease Ordering App, focusing on real-time order management.
+  version: "1.0.0"
+servers:
+  - url: 'https://module-c-s.dineease.com/api/v1'
+paths:
+
+  /menuCategories:
+    get:
+      summary: Get all menu categories
+      description: Returns all the menu categories into which the items on the menu are classified. The order is determined by the priority value. The item with the lowest priority value will be at the top and the item with the highest priority value will be at the bottom.
+      tags:
+        - menuCategories
+      responses:
+        '200':
+          description: A list of menu categories.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MenuCategoryGetResponse'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+    post:
+      summary: DO NOT IMPLEMENT! Create new menu category
+      tags:
+        - menuCategories
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MenuCategoryCreateRequest'
+      responses:
+        '201':
+          description: Menu category created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MenuCategoryGetResponse'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+  /menuCategories/{id}:
+    delete: 
+      summary: DO NOT IMPLEMENT! Delete a menu category
+      tags:
+        - menuCategories
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Menu category deleted.
+          content: 
+            text/html:
+              schema:
+                type: string
+                example: Menu category deleted
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+    put:
+      summary: DO NOT IMPLEMENT! Update a menu category
+      tags:
+        - menuCategories
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MenuCategoryCreateRequest'
+      responses:
+        '200':
+          description: Menu category updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MenuCategoryGetResponse'
+        '404':
+          description: Menu category not found.
+          content:
+            text/html:
+              schema:
+                type: string
+                example: Menu category not found
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+  /menuItems:
+    get:
+      summary: Get all menu items
+      tags:
+        - menuItems
+      responses:
+        '200':
+          description: A list of menu items.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MenuItemGetResponse'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+    post:
+      summary: Create a new menu item
+      tags:
+        - menuItems
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MenuItemCreateUpdateRequest'
+      responses:
+        '201':
+          description: menu item created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MenuItemGetResponse'
+        '400':
+          description: If one of the mandatory fields (name, type, menuCategoryId:, price) is missing or if the value of the type is invalid or if the menuCategory with the given ID does not exist.
+          content:
+            text/html:
+              schema:
+                oneOf:
+                  - type: string
+                    example: One of the mandatory fields is missing
+                  - type: string
+                    example: Menucard category with the given ID does not exist.
+                  - type: string
+                    example: Value of the type field is invalid.
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+  /menuItems/{id}:
+    put:
+      summary: Update a menu item
+      tags:
+        - menuItems
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MenuItemCreateUpdateRequest'
+      responses:
+        '200':
+          description: menu item updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MenuItemGetResponse'
+        '404':
+          description: Menu item not found.
+          content:
+            text/html:
+              schema:
+                type: string
+                example: Menu item not found
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+    delete:
+      summary: Delete a menu item
+      tags:
+        - menuItems
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Menu item deleted.
+          content:
+            text/html:
+              schema:
+                type: string
+                example: Menu item deleted
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+  /orders:
+    post:
+      summary: Create new order
+      description: Creates a new order for a given table. If an open order already exists for the table, it will return a 'Bad request' error. If the table does not exist, it will return a 'Not found' error. The response will include the order details without the order items.
+      tags:
+        - orders
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderCreateRequest'
+      responses:
+        '201':
+          description: New order created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderGetResponseNoItems'
+        '400':
+          description: Bad request, if open order exists for this table.
+          content:
+            text/html:
+              schema:
+                type: string
+                example: Table already has an open order
+        '404':
+          description: Table not found.
+          content:
+            text/html:
+              schema:
+                type: string
+                example: Table not found
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+    get:
+      summary: DO NOT IMPLEMENT! Get all orders
+      description: Returns all orders, including the order items and the menu item details for each order item.
+      tags:
+        - orders
+      responses:
+        '200':
+          description: A list of orders.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OrderGetResponseWithItems'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+
+  /orders/tables/{tableId}:
+    get:
+      summary: Get open order for table
+      description: Returns the lastly created open (unclosed) order of a given table. The response will also include the order items for the order and the menu item details for each order item.
+      tags:
+        - orders
+      parameters:
+        - name: tableId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Order details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderGetResponseWithItems'
+        '404':
+          description: Order not found.
+          content:
+            text/html:
+              schema:
+                type: string
+                example: Order not found
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+
+  /orders/tables/{tableId}/close:
+    put:
+      summary: Close order
+      description: Closes an order for a specified table.
+      tags:
+        - orders
+      parameters:
+        - name: tableId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Order closed successfully.
+          content:
+            text/html:
+              schema:
+                type: string
+                example: Order closed successfully
+        '404':
+          description: Order not found.
+          content:
+            text/html:
+              schema:
+                type: string
+                example: Order not found
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+  /orderItems:
+    post:
+      summary: Create new order item
+      description: Creates a new order item. If the order does not exist or is closed, it returns 'Bad request' error.
+      tags:
+        - orderItems
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderItemCreateRequest'
+      responses:
+        '201':
+          description: Order item created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderItemGetResponse'
+        '400':
+            description: The order item could not be created.
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+  /stats:
+    get:
+      summary: Get statistics
+      description: Returns statistics of all closed and unclosed orders.
+      tags:
+        - stats
+      responses:
+        '200':
+          description: Successful response with statistics.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Stats'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+  /tables:
+    get:
+      summary: DO NOT IMPLEMENT! Get all tables
+      description: Returns the list of all tables provided for restaurant guests. The table elements contain the `x`, `y`, `width` and `height` data needed to display the table map.
+      tags:
+        - tables
+      responses:
+        '200':
+          description: A list of tables.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Table'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+  /login:
+    post:
+      summary: Login (username and password)
+      description: Authenticate users by username and password. Only users with the role 'ADMIN' can access this endpoint. Returns a token upon successful authentication.
+      tags:
+        - authentication
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '200':
+          description: Successful login
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+        '401':
+          description: Unauthorized
+          content:
+            text/html:
+              schema:
+                type: string
+                example: Unauthorized
+  /login/pin:
+    post:
+      summary: Login (PIN)
+      description: Authenticates users by PIN code. Only users with the role 'WAITER' can access this endpoint. Returns a token upon successful authentication.
+      tags:
+        - authentication
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                pin:
+                  type: string
+      responses:
+        '200':
+          description: Successful login
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+        '401':
+          description: Unauthorized
+          content:
+            text/html:
+              schema:
+                type: string
+                example: Unauthorized
+  /logout:
+    post:
+      summary: Logout
+      description: Logs out the user.
+      tags:
+        - authentication
+      security: []
+      responses:
+        '200':
+          description: Logged out
+          content:
+            text/html:
+              schema:
+                type: string
+                example: Logged out
+  /reset-db:
+    post:
+      summary: DO NOT IMPLEMENT! Reset the database
+      description: Resets the database to its initial state.
+      tags:
+        - other
+      security: []
+      responses:
+        '200':
+          description: Database reset successful.
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: md5Token
+  responses:
+    UnauthorizedError:
+      description: Unauthorized
+      content:
+        text/html:
+          schema:
+            type: string
+            example: Unauthorized
+  schemas:
+
+    MenuCategoryCreateRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        priority:
+          type: number
+      required:
+        - name
+        - priority
+    
+    MenuCategoryGetResponse:
+      allOf:
+        - $ref: '#/components/schemas/MenuCategoryCreateRequest'
+        - type: object
+          properties:
+            id:
+              type: integer
+            createdAt:
+              type: string
+              format: date-time
+            updatedAt:
+              type: string
+              format: date-time
+
+    MenuItemCreateUpdateRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+          enum: [FOOD, DRINK, OTHER]
+        menuCategoryId:
+          type: integer
+        price:
+          type: number
+      required:
+        - name
+        - type
+        - menuCategoryId
+        - price
+
+    MenuItemGetResponse:
+      allOf:
+        - $ref: '#/components/schemas/MenuItemCreateUpdateRequest'
+        - type: object
+          properties:
+            id:
+              type: integer
+            createdAt:
+              type: string
+              format: date-time
+            updatedAt:
+              type: string
+              format: date-time
+
+    OrderCreateRequest:
+      type: object
+      properties:
+        tableId:
+          type: integer
+      required:
+        - tableId
+      
+    OrderGetResponseNoItems:
+      allOf:
+        - $ref: '#/components/schemas/OrderCreateRequest'
+        - type: object
+          properties:
+            id:
+              type: integer
+            createdAt:
+              type: string
+              format: date-time
+            updatedAt:
+              type: string
+              format: date-time
+            closedAt:
+              type: string
+              format: date-time
+              nullable: true
+    
+    OrderGetResponseWithItems:
+      allOf:
+        - $ref: '#/components/schemas/OrderGetResponseNoItems'
+        - type: object
+          properties:
+            OrderItems:
+              type: array
+              items:
+                $ref: '#/components/schemas/OrderItemGetResponseWithMenuItem'
+
+    OrderItemCreateRequest:
+      type: object
+      properties:
+        orderId:
+          type: integer
+        menuItemId:
+          type: integer
+        quantity:
+          type: integer
+      required:
+        - orderId
+        - menuItemId
+        - quantity
+
+    OrderItemGetResponse:
+      allOf:
+        - $ref: '#/components/schemas/OrderItemCreateRequest'
+        - type: object
+          properties:
+            id:
+              type: integer
+            createdAt:
+              type: string
+              format: date-time
+            updatedAt:
+              type: string
+              format: date-time
+    
+    OrderItemGetResponseWithMenuItem:
+      allOf:
+        - $ref: '#/components/schemas/OrderItemGetResponse'
+        - type: object
+          properties:
+            MenuItem:
+              $ref: '#/components/schemas/MenuItemGetResponse'
+
+    Stats:
+      type: object
+      properties:
+        totalRevenue:
+          type: integer
+        countOfOrderItem:
+          type: array
+          items:
+            $ref: '#/components/schemas/CountOfOrderItem'
+
+    CountOfOrderItem:
+      type: object
+      properties:
+        menuItemId:
+          type: integer
+        menuItemName:
+          type: string
+        count:
+          type: integer
+
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+        firstName:
+          type: string
+        lastName:
+          type: string
+        username:
+          type: string
+        pin:
+          type: string
+        role:
+          type: string
+          enum: [ADMIN, WAITER, MANAGER]
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+
+    Table:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        x:
+          type: integer
+        y:
+          type: integer
+        width:
+          type: integer
+        height:
+          type: integer
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        hasOpenOrder:
+          type: boolean
+security:
+  - bearerAuth: []

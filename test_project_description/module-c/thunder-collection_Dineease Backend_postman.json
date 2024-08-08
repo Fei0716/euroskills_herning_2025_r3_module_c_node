@@ -1,0 +1,606 @@
+{
+    "info": {
+        "_postman_id": "ccd1b96e-ac2b-42a8-b4a3-d4e02a12151c",
+        "name": "Dineease Backend",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "description": ""
+    },
+    "item": [
+        {
+            "name": "menuCategories",
+            "item": [
+                {
+                    "name": "Get all menu categories",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/menuCategories",
+                            "host": [
+                                "menucategories"
+                            ]
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "DO NOT IMPLEMENT: Create new menu category",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "/menuCategories",
+                            "host": [
+                                "menucategories"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"name\": \"Extra Meal\"\n}"
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "DO NOT IMPLEMENT: Delete a menu category",
+                    "request": {
+                        "method": "DELETE",
+                        "url": {
+                            "raw": "/menuCategories/:id",
+                            "query": [],
+                            "variable": [
+                                {
+                                    "key": "id",
+                                    "value": "24"
+                                }
+                            ],
+                            "path": [
+                                ":id"
+                            ],
+                            "host": [
+                                "menucategories"
+                            ]
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "DO NOT IMPLEMENT: Update a menu category",
+                    "request": {
+                        "method": "PUT",
+                        "url": {
+                            "raw": "/menuCategories/:id",
+                            "query": [],
+                            "variable": [
+                                {
+                                    "key": "id",
+                                    "value": "24"
+                                }
+                            ],
+                            "path": [
+                                ":id"
+                            ],
+                            "host": [
+                                "menucategories"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"name\": \"thunder\",\n  \"priority\": 36\n}"
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "menuItems",
+            "item": [
+                {
+                    "name": "Get all menu items",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/menuItems",
+                            "host": [
+                                "menuitems"
+                            ]
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Create a new menu item",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "/menuItems",
+                            "host": [
+                                "menuitems"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"name\": \"Pizza Pacalos\",\n  \"type\": \"FOOD\",\n  \"menuCategoryId\": 12,\n  \"price\": 3600\n}"
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Update a menu item",
+                    "request": {
+                        "method": "PUT",
+                        "url": {
+                            "raw": "/menuItems/:id",
+                            "query": [],
+                            "variable": [
+                                {
+                                    "key": "id",
+                                    "value": "79"
+                                }
+                            ],
+                            "path": [
+                                ":id"
+                            ],
+                            "host": [
+                                "menuitems"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"name\": \"Fritz Cola\"\n}"
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Delete a menu item",
+                    "request": {
+                        "method": "DELETE",
+                        "url": {
+                            "raw": "/menuItems/:id",
+                            "query": [],
+                            "variable": [
+                                {
+                                    "key": "id",
+                                    "value": "155"
+                                }
+                            ],
+                            "path": [
+                                ":id"
+                            ],
+                            "host": [
+                                "menuitems"
+                            ]
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "orders",
+            "item": [
+                {
+                    "name": "Create new order",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "/orders",
+                            "host": [
+                                "orders"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"tableId\": 14\n}"
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "DO NOT IMPLEMENT: Get all orders",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/orders",
+                            "host": [
+                                "orders"
+                            ]
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get open order for table",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/orders/tables/:tableId",
+                            "query": [],
+                            "variable": [
+                                {
+                                    "key": "tableId",
+                                    "value": "14"
+                                }
+                            ],
+                            "path": [
+                                "tables",
+                                ":tableId"
+                            ],
+                            "host": [
+                                "orders"
+                            ]
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Close order",
+                    "request": {
+                        "method": "PUT",
+                        "url": {
+                            "raw": "/orders/tables/:tableId/close",
+                            "query": [],
+                            "variable": [
+                                {
+                                    "key": "tableId",
+                                    "value": "14"
+                                }
+                            ],
+                            "path": [
+                                "tables",
+                                ":tableId",
+                                "close"
+                            ],
+                            "host": [
+                                "orders"
+                            ]
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "orderItems",
+            "item": [
+                {
+                    "name": "Create new order item",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "/orderItems",
+                            "host": [
+                                "orderitems"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"orderId\": 12368,\n  \"menuItemId\": 79,\n  \"quantity\": 10\n}"
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "stats",
+            "item": [
+                {
+                    "name": "Get statistics",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/stats",
+                            "host": [
+                                "stats"
+                            ]
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "tables",
+            "item": [
+                {
+                    "name": "DO NOT IMPLEMENT: Get all tables",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/tables",
+                            "host": [
+                                "tables"
+                            ]
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "authentication",
+            "item": [
+                {
+                    "name": "Login (username and password)",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "/login",
+                            "host": [
+                                "login"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"username\": \"thunder\",\n  \"password\": \"thunder\"\n}"
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Login (PIN)",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "/login/pin",
+                            "path": [
+                                "pin"
+                            ],
+                            "host": [
+                                "login"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"pin\": \"1234\"\n}"
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Logout",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "/logout",
+                            "host": [
+                                "logout"
+                            ]
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "other",
+            "item": [
+                {
+                    "name": "DO NOT IMPLEMENT: Reset the database",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "/reset-db",
+                            "host": [
+                                "reset-db"
+                            ]
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}

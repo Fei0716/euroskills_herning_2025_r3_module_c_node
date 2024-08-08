@@ -1,0 +1,84 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["omitApi", "selectRelationCount"]
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model menucategory {
+  id        Int        @id @default(autoincrement())
+  name      String
+  priority  Float      @default(-1)
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  menuitems menuitem[]
+}
+
+model menuitem {
+  id             Int          @id @default(autoincrement())
+  name           String
+  type           String       @default("FOOD")
+  menuCategoryId Int
+  price          Decimal      @db.Decimal(10, 2)
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+  menucategory   menucategory @relation(fields: [menuCategoryId], references: [id], map: "MenuItem_menuCategoryId_fkey")
+  orderitems     orderitem[]
+
+  // block level constraint / attribute
+  @@index([menuCategoryId], map: "MenuItem_menuCategoryId_fkey")
+}
+
+model order {
+  id         Int         @id @default(autoincrement())
+  tableId    Int
+  closedAt   DateTime?
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
+  table      table       @relation(fields: [tableId], references: [id], map: "Order_tableId_fkey")
+  orderitems orderitem[]
+
+  @@index([tableId], map: "Order_tableId_fkey")
+}
+
+model orderitem {
+  id         Int      @id @default(autoincrement())
+  orderId    Int
+  menuItemId Int
+  quantity   Int
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  menuitem   menuitem @relation(fields: [menuItemId], references: [id], map: "OrderItem_menuItemId_fkey")
+  order      order    @relation(fields: [orderId], references: [id], map: "OrderItem_orderId_fkey")
+
+  @@index([menuItemId], map: "OrderItem_menuItemId_fkey")
+  @@index([orderId], map: "OrderItem_orderId_fkey")
+}
+
+model table {
+  id        Int      @id @default(autoincrement())
+  name      String
+  x         Int
+  y         Int
+  width     Int
+  height    Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  orders    order[]
+}
+
+model user {
+  id        Int      @id @default(autoincrement())
+  firstName String
+  lastName  String
+  username  String   @unique(map: "User_username_key")
+  password  String
+  pin       String   @unique(map: "User_pin_key")
+  role      String   @default("WAITER")
+  token     String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
